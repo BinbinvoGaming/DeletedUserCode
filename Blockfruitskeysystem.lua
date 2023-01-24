@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local LoadKey = loadstring(game:HttpGet("https://pastebin.com/raw/QjbJLNCK",true))()
+local LoadKey = loadstring(game:HttpGet("https://pastebin.com/raw/4MYep3ew"))()
 local Window = OrionLib:MakeWindow({Name = "key system", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local CurrentKey = ""
 
