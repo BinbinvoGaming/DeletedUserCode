@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local LoadKey = loadstring(game:HttpGet("https://pastebin.com/raw/iwwntaFk",true))()
+local LoadKey = loadstring(game:HttpGet("https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/KEYV1.lua",true))()
 local Window = OrionLib:MakeWindow({Name = "key system", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local CurrentKey = ""
 
@@ -69,7 +69,7 @@ Tab:AddButton({
 if CurrentKey == Key then
 if getgenv().done == false then
 	getgenv().done = true
-loadstring(game:HttpGet("https://pastebin.com/raw/7vgNgZNs",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/AutochestPremiumV1.lua",true))()
 OrionLib:Destroy()
 end
 else
