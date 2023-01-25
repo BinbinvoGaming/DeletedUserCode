@@ -51,7 +51,7 @@ local Section2 = Tab:AddSection({
 })
 
 local Section3 = Tab:AddSection({
-	Name = "We appreciate your understanding. 💪💪"
+	Name = "discord https://discord.gg/DctWYmkC - Youtube https://youtube.com/@binbinvogaming1716"
 })
 
 Tab:AddButton({
