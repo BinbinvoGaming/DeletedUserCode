@@ -92,4 +92,5 @@ local Tab2Section = Tab2:NewSection("farm factory tycoon")
 local Tab2Section = Tab2:NewSection("farm factory tycoon")
 end)
 Section:NewButton("Main farm factory tycoon", "Main farm factory tycoon", function()
-    
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/farmfactorytycoonhack.lua',true))()
+end)
