@@ -1,2 +1,12 @@
-# DeletedUserCode
-Hehe boi
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Window = Library.CreateLib("Premium Binbinvoroblox11 Gui", "Ocean")
+local Tab = Window:NewTab("King Legacy")
+local Section = Tab:NewSection("King Legacy")
+local Tab = Window:NewTab("king legacy")
+local Section = Tab:NewSection("king legacy")
+Section:NewButton("Hoho Hub", "HoHo HUB", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
+end)
+Section:NewButton("One X Hub", "One X Hub", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/King-Legacy/main/README.md"))()
+end)
