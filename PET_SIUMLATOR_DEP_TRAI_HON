@@ -25,3 +25,9 @@ end)
 Section:NewButton("boy Hub", "boy Hub", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/Solx69/Shit-Boy-Hub-Main/main/Pet%20Sim%20X'))()
 end)
+game.StarterGui:SetCore("SendNotification", {
+	    Title = "Premium Binbinvoroblox11 Notification";
+	    Text = "Game not supported";
+	    Duration = 10;
+    })
+end
