@@ -116,9 +116,6 @@ Section:NewButton("Switch Hub", "Switch Hub", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/LoserEiEi/EieiName/main/CrackSwitchHub"))();
 -- Switch Hub crack old update version --
 end)
-Section:NewButton("Master X Hub", "Master X Hub", function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/BlodyXHub/Xeniel_All/main/ForAll"))()
-end)
 Section:NewButton("ShowItem", "ShowItem", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CFA-HUB/CFAHub-Free/main/ShowItem.lua"))()
 end)
