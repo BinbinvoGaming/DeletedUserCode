@@ -1,6 +1,3 @@
-_, Protected_by_MoonSecV2, Discord = 'discord.gg/gQEH2uZxUk'_,
-
-
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Premium Binbinvoroblox11 Gui", "Ocean")
 local Tab = Window:NewTab("pet simulator x")
