@@ -1,6 +1,3 @@
-_, Protected_by_MoonSecV2, Discord = 'discord.gg/gQEH2uZxUk'_,
-
-
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Premium Binbinvoroblox11 Gui", "Ocean")
 local Tab = Window:NewTab("block fruits")
@@ -118,13 +115,4 @@ Section:NewButton("Switch Hub", "Switch Hub", function()
 end)
 Section:NewButton("ShowItem", "ShowItem", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CFA-HUB/CFAHub-Free/main/ShowItem.lua"))()
-end)
-Section:NewButton(" link discord", "link discord ", function()
-    setclipboard("https://discord.gg/dPJcdET8")
-end)
-Section:NewButton("link Youtube", "link Youtube", function()
-    setclipboard("https://youtube.com/@binbinvogaming1716")
-end)
-Section:NewButton("link tiktok", "link tiktok", function()
-    setclipboard("https://tiktok.com/@binbinvo12953285")
 end)
