@@ -10,7 +10,7 @@ local games = {
             " "
                 ..
 
-                        Gamename.. "!" .. " binbinvoroblox]"  .."\n Loadded Successfully script pvp"
+                        Gamename.. "!" .. " binbinvogaming"  .."\n Loadded Successfully script"
             )
     end
 }
