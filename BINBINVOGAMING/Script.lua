@@ -24,5 +24,5 @@ if games[game.PlaceId].Title == "Blox Fruits" then
     end
     notify("Notify", games[game.PlaceId].Welcome())
 end
-loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/MainPremiumLoader.lua',true))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/BINBINVOGAMING/SCRIPT/MainPremiumLoader.lua',true))()
 end
