@@ -58,7 +58,7 @@ Tab:AddButton({
 	Name = "Get Key link",
 	Callback = function()
       		copy("https://workink.net/2L8/Scriptcankey")
-			notice("Done" ,"This link has been copied to your clipboard. You can now paste it into your web browser.")
+			notice("Done" ," Script Binbinvogaming copy thanh cong.")
   	end    
 })
 
@@ -66,7 +66,7 @@ Tab:AddButton({
 	Name = "Get key link discord",
 	Callback = function()
       		copy("https://discord.gg/fwqbyujC")
-			notice("Done" ,"This link has been copied to your clipboard. You can now paste it into your web browser.")
+			notice("Done" ,"Script Binbinvogaming copy thanh cong")
   	end    
 })
 
