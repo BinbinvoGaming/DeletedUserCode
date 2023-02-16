@@ -29,7 +29,7 @@ local SilentAimSettings = {
 
 -- variables
 getgenv().SilentAimSettings = Settings
-local MainFileName = "UniversalSilentAim"
+local MainFileName = "BinbinvogamingaimPc"
 local SelectedFile, FileToSave = "", ""
 
 local Camera = workspace.CurrentCamera
