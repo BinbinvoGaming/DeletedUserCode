@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/Orion/Kaizenofficiall/Binbinvogaming/source.lua'))()
 local Window = Library.CreateLib("Premium Binbinvoroblox11 Gui", "Ocean")
 local Tab = Window:NewTab("block fruits")
 local Section = Tab:NewSection("block fruits")
