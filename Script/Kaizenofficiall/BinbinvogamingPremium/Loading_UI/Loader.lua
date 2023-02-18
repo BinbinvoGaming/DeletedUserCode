@@ -1,6 +1,6 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local LoadKey = loadstring(game:HttpGet("https://pastebin.com/raw/dDjR3C0g",true))()
-local Window = OrionLib:MakeWindow({Name = "Script Binbinvogaming", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({IntroText = "Script Binbinvogaming",Name = "Script Binbinvogaming", HidePremium = "OrionTest"})
 local CurrentKey = ""
 
 getgenv().done = false;
