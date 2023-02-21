@@ -46,14 +46,6 @@ Tab:AddTextbox({
 	end	  
 })
 
-local Section2 = Tab:AddSection({
-	Name = "Get Key  - https://workink.net/2L8/Scriptcankey"
-})
-
-local Section3 = Tab:AddSection({
-	Name = "Get key = https://workink.net/2L8/Scriptcankey"
-})
-
 Tab:AddButton({
 	Name = "Get Key link",
 	Callback = function()
