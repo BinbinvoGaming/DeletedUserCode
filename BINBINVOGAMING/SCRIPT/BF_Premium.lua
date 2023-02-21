@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("Premium Binbinvoroblox11 Gui", "Ocean")
+local Window = Library.CreateLib("BinbinvoGaming HUb", "Ocean")
 local Tab = Window:NewTab("block fruits")
 local Section = Tab:NewSection("block fruits")
 Section:NewButton("Deity_Hub", "Deity_Hub", function()
