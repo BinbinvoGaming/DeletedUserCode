@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("Premium Binbinvoroblox11 Gui", "Ocean")
+local Window = Library.CreateLib("BinbinvoGaming HUB", "Ocean")
 local Tab = Window:NewTab("pet simulator x")
 local Section = Tab:NewSection("pet simulator x")
 Section:NewButton("CLOUD HUB GUI", "CLOUD HUB GUI", function()
