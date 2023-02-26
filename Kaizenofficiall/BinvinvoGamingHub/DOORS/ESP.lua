@@ -637,4 +637,10 @@ window_esp.toggle("goldpile esp",false,function(val)
                 end
             end
         end
-        
+
+window_misc.button("close gui",function()
+    flags = DELFLAGS
+    
+    task.wait()
+    library.delete()
+end)
