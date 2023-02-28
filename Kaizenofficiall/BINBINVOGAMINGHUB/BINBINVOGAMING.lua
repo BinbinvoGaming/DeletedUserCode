@@ -1,6 +1,6 @@
 local gui = loadstring(game:HttpGet("https://gitlab.com/0x45.xyz/droplib/-/raw/master/drop-minified.lua"))():Init(config,game.CoreGui)
 local lpg = gui:CreateCategory("BinbinvoGaming Hub")
-lpg:CreateButton("BinbinvoGaming Hub l New",function()  end)
+lpg:CreateButton("BinbinvoGaming Hub l New",function() getgenv().key = "KEY_BinbinvoGamingHubNew"; loadstring(game:HttpGet(('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/Kaizenofficiall/BinbinvoGaming/BinbinvoGaming%20Hub%20.lua'),true))() end)
 local req = (syn and syn.request) or (http and http.request) or http_request or request
 req(
    {
