@@ -1,0 +1,1 @@
+getgenv().key = "KEY_BinbinvoGamingHubNew"; loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/Kaizenofficiall/BINBINVOGAMINGHUB/BINBINVOGAMING.lua',true))()
