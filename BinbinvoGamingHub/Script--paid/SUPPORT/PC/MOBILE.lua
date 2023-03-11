@@ -24,7 +24,9 @@ Time = 5
 
 end
 
-notice("hello ban da sai script cua minh")
+notice("Welcome", "Script is locked please go Get the key")
+
+notice("Script By Binbinvogaming", "Script By Binbinvogaming")
 
 local Tab = Window:MakeTab({
 	Name = "Key System",
@@ -69,7 +71,7 @@ local Section3 = Tab:AddSection({
 	Name = "Discord NAME BinbinvoGaming I Community"
 })
 
-local Section3 = Tab:AddSection({
+local Section4 = Tab:AddSection({
 	Name = "Youtube NAME BinbinvoGaming"
 })
 
