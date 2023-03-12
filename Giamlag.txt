@@ -1,1 +1,0 @@
-([[This file was protected with MoonSec V3 by Federal#9999]]):gsub('.+', (function(a) _bSJWrxTmqodc = a; end)); 
