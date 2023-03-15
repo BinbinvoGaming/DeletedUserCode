@@ -28,6 +28,12 @@ notice("Welcome", "Script is locked please go Get the key")
 
 notice("Script By Binbinvogaming", "Script By Binbinvogaming")
 
+local Tab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
 Tab:AddButton({
 	Name = "Get Script",
 	Callback = function()
