@@ -34,12 +34,6 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Tab = Window:MakeTab({
-	Name = "Script By",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
 Tab:AddButton({
 	Name = "Get Script",
 	Callback = function()
@@ -97,4 +91,3 @@ end
 })
 
 OrionLib:Init()
-
