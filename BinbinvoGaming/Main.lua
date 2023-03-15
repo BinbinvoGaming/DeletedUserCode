@@ -28,28 +28,6 @@ notice("Welcome", "Script is locked please go Get the key")
 
 notice("Script By Binbinvogaming", "Script By Binbinvogaming")
 
-local CreditsTab = Window:MakeTab({
-    Name = "Main",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
- 
-CreditsTab:AddParagraph("Thank Youuuuuu thanks for using my script")
-
-Tab:AddButton({
-	Name = "Join Discord",
-	Callback = function()
-      		copy("https://discord.gg/cEBH8e5Kủ")
-			notice("BinbinvoGaming", "BinbinvoGaming")
-  	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "Get Script",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
 Tab:AddButton({
 	Name = "Get Script",
 	Callback = function()
