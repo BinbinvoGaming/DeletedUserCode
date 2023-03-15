@@ -34,15 +34,7 @@ local CreditsTab = Window:MakeTab({
     PremiumOnly = false
 })
  
-CreditsTab:AddParagraph("Thank Youuuuuu")
-
-local CreditsTab = Window:MakeTab({
-    Name = "Credits",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
- 
-CreditsTab:AddParagraph("CreditsTab:AddParagraph("")
+CreditsTab:AddParagraph("Thank Youuuuuu thanks for using my script")
 
 Tab:AddButton({
 	Name = "Join Discord",
