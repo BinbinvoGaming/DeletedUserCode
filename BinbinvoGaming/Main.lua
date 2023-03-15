@@ -28,6 +28,30 @@ notice("Welcome", "Script is locked please go Get the key")
 
 notice("Script By Binbinvogaming", "Script By Binbinvogaming")
 
+local CreditsTab = Window:MakeTab({
+    Name = "Main",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+ 
+CreditsTab:AddParagraph("Thank Youuuuuu")
+
+local CreditsTab = Window:MakeTab({
+    Name = "Credits",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+ 
+CreditsTab:AddParagraph("CreditsTab:AddParagraph("")
+
+Tab:AddButton({
+	Name = "Join Discord",
+	Callback = function()
+      		copy("https://discord.gg/cEBH8e5Kủ")
+			notice("BinbinvoGaming", "BinbinvoGaming")
+  	end    
+})
+
 local Tab = Window:MakeTab({
 	Name = "Get Script",
 	Icon = "rbxassetid://4483345998",
@@ -61,14 +85,6 @@ Tab:AddButton({
 	Callback = function()
       		copy("https://workink.net/2L8/BinbinvoGamingHubkeysteam1")
 			notice("BinbinvoGaming Support Get Key", "getkey")
-  	end    
-})
-
-Tab:AddButton({
-	Name = "get key link discord",
-	Callback = function()
-      		copy("https://discord.gg/d6Qm8NvcGC")
-			notice("BinbinvoGaming Support Get Key", "Getkey")
   	end    
 })
 
