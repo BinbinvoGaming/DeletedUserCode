@@ -72,6 +72,22 @@ Tab:AddButton({
   	end    
 })
 
+local Section2 = Tab:AddSection({
+	Name = "Script by Binbinvogaming"
+})
+
+local Section3 = Tab:AddSection({
+	Name = "discord BinBinvoGamingHub I Community"
+})
+
+local Section4 = Tab:AddSection({
+	Name = "Youtube BinbinvoGaming"
+})
+
+local Section5 = Tab:AddSection({
+	Name = "Tiktok Binbinvo11"
+})
+
 Tab:AddButton({
 	Name = "Unlock",
 	Callback = function()
