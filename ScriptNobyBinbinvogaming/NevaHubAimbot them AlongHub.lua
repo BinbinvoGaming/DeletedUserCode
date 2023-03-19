@@ -1,0 +1,1 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/VEZ2/NEVAHUBAIMBOT/main/Loader.lua'))()loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/Kaizenofficiall/BinbinvoGaming/AloneHub/autoframbounty.lua'))()
