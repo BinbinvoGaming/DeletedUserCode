@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/bloxfruit/04ce28e9722e9e299da6687f218e6d96c194c42d/BinbinvoGamingHubBF.lua'))()loadstring(game:HttpGet('https://pastebin.com/raw/0KmBK9VX',true))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/bloxfruit/aee3593ba2976978d328a7093a75024a41dd5293/Binbinvogaminghub.txt'))()loadstring(game:HttpGet('https://pastebin.com/raw/0KmBK9VX',true))()
