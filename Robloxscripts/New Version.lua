@@ -62,14 +62,6 @@ TabSettings:AddButton({
   	end    
 })
 
-local CreditsTab = Window:MakeTab({
-        Name = "Credits",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-})
- 
-CreditsTab:AddParagraph("Credits by Binbinvogaming","Script By BinbinvoGaming Free script https://scriptblox.com")
-
 local Tab = Window:MakeTab({
         Name = "Settings",
         Icon = "rbxassetid://4483345998",
