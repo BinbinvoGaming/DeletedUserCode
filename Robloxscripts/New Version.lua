@@ -60,8 +60,4 @@ Tab:AddButton({
   	end    
 })
 
-OrionLib:Destroy()
-end
-else
-
 OrionLib:Init()
