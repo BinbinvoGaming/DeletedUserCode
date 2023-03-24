@@ -37,14 +37,6 @@ Tab:AddButton({
 })
 
 Tab:AddButton({
-	Name = "Avatar Main Script Free",
-	Callback = function()
-      		copy("https://www.mediafire.com/file/une8a05nsphfvx0/Screenshot_2023-03-23-21-41-45-595_com.roblox.client%257E2.jpg/file")
-			notice("Done" ,"Copy Thanh cong")
-  	end    
-})
-
-Tab:AddButton({
 	Name = "Main Auto Farm",
 	Callback = function()
       		copy("loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/BinbinvoGamingCommmunty/main/Loader.lua',true))()")
@@ -52,12 +44,12 @@ Tab:AddButton({
   	end    
 })
 
-Tab:AddButton({
-	Name = "Avatar Script Auto farm",
-	Callback = function()
-      		copy("https://www.mediafire.com/file/une8a05nsphfvx0/Screenshot_2023-03-23-21-41-45-595_com.roblox.client%257E2.jpg/file")
-			notice("Done" ,"Copy Thanh cong")
-  	end    
+local CreditsTab = Window:MakeTab({
+        Name = "Credits",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
 })
+ 
+CreditsTab:AddParagraph("Credits by Binbinvogaming","Script By BinbinvoGaming Free script https://scriptblox.com")
 
 OrionLib:Init()
