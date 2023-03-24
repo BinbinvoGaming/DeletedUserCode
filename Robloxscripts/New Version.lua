@@ -70,7 +70,7 @@ local CreditsTab = Window:MakeTab({
  
 CreditsTab:AddParagraph("Credits by Binbinvogaming","Script By BinbinvoGaming Free script https://scriptblox.com")
 
-local CreditsTab = Window:MakeTab({
+local Tab = Window:MakeTab({
         Name = "Settings",
         Icon = "rbxassetid://4483345998",
         PremiumOnly = false
@@ -92,4 +92,9 @@ Tab:AddButton({
   	end    
 })
 
-OrionLib:Init()
+local Tab = Window:MakeTab({
+	Name = "ESP",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
