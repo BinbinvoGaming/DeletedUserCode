@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/DeletedUserCodeblockfuits/DeletedUserCode/main/BINBINVOGAMING/SCRIPT/MainPremiumLoader.lua',true))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/MainPremiumBlox%20fruits%20petsimulator%20x.lua'))()
