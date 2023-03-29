@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://gitlab.com/DeletedUserCodeblockfuits/BinbinvoGaming/-/raw/main/BFLoader',true))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/LoaderGame.lua))()
