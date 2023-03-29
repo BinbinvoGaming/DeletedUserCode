@@ -1,6 +1,7 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Zuizekoqeo Hub", "Ocean")
 local Tab = Window:NewTab("block fruits")
+local Section = Tab:NewSection("blox fruits")
 Section:NewButton("Hit Bot", "HIT BOT", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/ghZNXvsh'))()
 end)
