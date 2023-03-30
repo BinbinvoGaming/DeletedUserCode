@@ -4,8 +4,8 @@ loadstring(game:HttpGet('https://pastebin.com/raw/kR5YsUB8'))()
 
 key:MakeUI({
   Title = "Title",
-  KeyLinkName = "name of link key after getkey/ which",
-  DiscordID = "discord server ID like JEy2xbvv ending after discord.gg/",
+  KeyLinkName = "BinbinvoGamingHub",
+  DiscordID = "Script made By BinbinvoGaming",
   ScriptLink = "script link"
 })
 
@@ -27,7 +27,7 @@ if is_key_present == true then
 -- full script here:)
     end
 else
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Arceus-X-V3.lua'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/BinbinvoGamingHubChestFarm.lua'))()
     --wrong key
     lib:MakeNotification({
         Name = "Warning!",
