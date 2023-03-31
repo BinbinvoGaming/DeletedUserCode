@@ -1,0 +1,1 @@
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/bloxfruit/719b8294cf9580f9f0e3613f7ecb396c1fdffbcb/Main.lua'))()loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/FastAttack.lua'))()
