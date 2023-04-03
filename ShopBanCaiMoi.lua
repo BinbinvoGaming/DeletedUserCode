@@ -9,7 +9,7 @@ if game:GetService("Players").LocalPlayer.PlayerGui.MainUI.ItemShop.Visible == t
         Title = "BinbinvoGaming",
         Desc = "Hi",
         Image = "https://cdn.discordapp.com/attachments/1092205669597327484/1092408453370220564/Screenshot_2023-03-26-12-29-14-601-edit_com.pinterest.jpg",
-        Price = "gun",
+        Price = "free",
         Stack = 1,
     })
     ----------------------------------------- parenting
