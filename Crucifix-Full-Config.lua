@@ -1,4 +1,4 @@
-_G.Uses = 1000000
+_G.Uses = 1
 _G.Range = 30
 _G.OnAnything = true
 _G.Fail = false
