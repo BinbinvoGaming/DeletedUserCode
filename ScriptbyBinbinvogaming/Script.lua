@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("BinbinvoGaming HUB", "Ocean")
 local Tab = Window:NewTab("block fruits")
 local Section = Tab:NewSection("blox fruits")
