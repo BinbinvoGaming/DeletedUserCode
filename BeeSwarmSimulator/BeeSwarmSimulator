@@ -1,1 +1,1 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/raw/79c9ade0f6c808de355173dcface09283972d7cb/BinbinvoGamingHub/LoaderGame'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/raw/main/BeeSwarmSimulator'))()
