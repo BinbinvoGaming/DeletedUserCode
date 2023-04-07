@@ -1124,7 +1124,7 @@ Main:AddSlider({
     Name = "Speed",
     Min = 1,
     Max = 200,
-    Default = 20,
+    Default = 50,
     Color = Color3.fromRGB(230,255,255),
     Increment = 1,
     ValueName = " Speed",
