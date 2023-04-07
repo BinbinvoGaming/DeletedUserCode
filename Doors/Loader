@@ -1,5 +1,13 @@
-OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "BinbinvoGaming Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "BinbinvoGaming Hub", IntroEnabled = true, IntroText = "BinbinvoGaming|Loader",IntroIcon = "rbxassetid://10472045394", Icon = "rbxassetid://10472045394" })
+if game.PlaceId == 6516141723 then
+    OrionLib:MakeNotification({
+        Name = "Error",
+        Content = "Please execute when in game, not in lobby.",
+        Time = 2
+    })
+end
+
 local VisualsTab = Window:MakeTab({
 	Name = "Visuals",
 	Icon = "rbxassetid://4483345998",
