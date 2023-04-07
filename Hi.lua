@@ -13,4 +13,4 @@ end
 
 warnmessage("BinbinvoGaming", "You are using an old loadstring. Join our discord (https://discord.gg/m7m5fZDPjb).", 10)
 task.wait(2.5)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Bss/BinbinvoGaming.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/HiV2.lua'))()
