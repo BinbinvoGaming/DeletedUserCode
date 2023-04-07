@@ -7,7 +7,6 @@ if game.PlaceId == 6516141723 then
         Time = 2
     })
 end
-
 local VisualsTab = Window:MakeTab({
 	Name = "Visuals",
 	Icon = "rbxassetid://4483345998",
