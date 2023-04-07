@@ -1,0 +1,4 @@
+Key = "88b214234f304e778b465d41fa99a9ef"
+Link = "https://link-target.net/657132/how-to-get-key"
+Script = "https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/HWE"
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/FreeKeySystem.lua'))().Sus(Link,Script,Key)
