@@ -1,0 +1,4 @@
+Key = "BinbinvoGaming_e89787ef062845a18a40b7bcc38358635d3355f056ee55623aede28eefe8243c"
+Link = "https://direct-link.net/657132/checkponit2"
+Script = "https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/CcV1.lua"
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/FreeKeySystem.lua'))().Sus(Link,Script,Key)
