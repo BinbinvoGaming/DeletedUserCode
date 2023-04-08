@@ -1,4 +1,4 @@
-Key = "88b214234f304e778b465d41fa99a9ef"
-Link = "https://link-target.net/657132/how-to-get-key"
+Key = "BinbinvoGaming_e89787ef062845a18a40b7bcc3835863"
+Link = "https://link-center.net/657132/key-steam-binbinvogaming"
 Script = "https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Hi.lua"
 loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/FreeKeySystem.lua'))().Sus(Link,Script,Key)
