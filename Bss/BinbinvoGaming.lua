@@ -355,6 +355,38 @@ Event = game:GetService("ReplicatedStorage").Events.PlayerActivesCommand
 Event:FireServer(Mbee)
   	end    
 })
+Main:AddSlider({
+    Name = "Speed",
+    Min = 1,
+    Max = 300,
+    Default = 150,
+    Color = Color3.fromRGB(230,255,255),
+    Increment = 1,
+    ValueName = " Speed",
+    Callback = function(preston)
+        _G.speed = preston
+    end    
+})
+Main:AddToggle({
+    Name = "Speed hack",
+    Default = false,
+    Callback = function(prestonon)
+        while prestonon == true do
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = _G.speed wait(0.2) end
+        end    
+})
+Main:AddSlider({
+    Name = "Jump Power",
+    Min = 0,
+    Max = 2000,
+    Default = 100,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "power",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+        end
+})
 Main:AddToggle({
     Name = "Auto Dig",
     Default = false,
@@ -1132,38 +1164,6 @@ Mobs:AddToggle({
              game.Players.LocalPlayer.Character.Humanoid.HipHeight = 3
          end 
 end})
-Main:AddSlider({
-    Name = "Speed",
-    Min = 1,
-    Max = 300,
-    Default = 100,
-    Color = Color3.fromRGB(230,255,255),
-    Increment = 1,
-    ValueName = " Speed",
-    Callback = function(preston)
-        _G.speed = preston
-    end    
-})
-Main:AddToggle({
-    Name = "Speed hack",
-    Default = false,
-    Callback = function(prestonon)
-        while prestonon == true do
-game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = _G.speed wait(0.2) end
-        end    
-})
-Main:AddSlider({
-    Name = "Jump Power",
-    Min = 0,
-    Max = 2000,
-    Default = 80,
-    Color = Color3.fromRGB(255,255,255),
-    Increment = 1,
-    ValueName = "power",
-    Callback = function(Value)
-        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-        end
-})
 Mask:AddDropdown({
     Name = "Equip Mask",
     Default = "nil",
