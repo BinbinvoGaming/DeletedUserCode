@@ -1,3 +1,6 @@
+if not game:IsLoaded() then game.Loaded:Wait() end
+if game.PlaceId ~= 4490140733 then return end
+
 local Library = require(game:GetService("ReplicatedStorage"):WaitForChild("Framework"):WaitForChild("Library"));
 assert(Library, "Oopps! Library has not been loaded. Maybe try re-joining?") 
 while not Library.Loaded do wait() end
