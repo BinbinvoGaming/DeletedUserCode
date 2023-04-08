@@ -622,6 +622,18 @@ Main:AddDropdown({
   _G.cords = game:GetService("Workspace").FlowerZones[_G.area].CFrame
     end
 })
+Main:AddButton({
+	Name = "Copy Discord",
+	Callback = function()
+    setclipboard("discord.gg/m7m5fZDPjb")
+  	end    
+})
+Main:AddButton({
+	Name = "Copy Youtube",
+	Callback = function()
+    setclipboard("https://youtube.com/@binbinvogaming")
+  	end    
+})
 Main:AddToggle({
     Name = "Auto Farm [slow]",
     Default = false,
