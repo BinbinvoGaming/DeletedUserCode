@@ -13,4 +13,4 @@ end
 
 warnmessage("BinbinvoGaming", "Successfully .", 10)
 task.wait(2.5)
-loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Bss/BinbinvoGaming.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/HiV3.lua'))()
