@@ -1,0 +1,27 @@
+local gui = loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/UiLib.lua'))():Init(config,game.CoreGui)
+
+
+local lpg = gui:CreateCategory("chestfarmPremium - Blox Fruits")
+lpg:CreateButton("(BEST & Key) BinbinvoGaming Hub",function() loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/BeeSwarmSimulator/Loader'))() end)
+lpg:CreateButton("(BEST & No Key) Histy Hub",function() loadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/Histy"))() end)
+lpg:CreateButton("(BEST & No Key) Kocmoc Hub PC",function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Boxking776/kocmoc/main/kocmoc-remastered.lua"))() end)
+
+local req = (syn and syn.request) or (http and http.request) or http_request or request
+
+req(
+   {
+       Url = "http://127.0.0.1:6463/rpc?v=1",
+       Method = "POST",
+       Headers = {
+           ["Content-Type"] = "application/json",
+           ["origin"] = "https://discord.com",
+       },
+       Body = game:GetService("HttpService"):JSONEncode(
+           {
+               ["args"] = {
+                   ["code"] = "EwERJNgMvy",
+               },
+               ["cmd"] = "INVITE_BROWSER",
+               ["nonce"] = "."
+           })
+   })
