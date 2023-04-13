@@ -58,6 +58,11 @@ local Visuanal = Window:MakeTab({
 	Icon = "",
 	PremiumOnly = false
 })
+local Settings = Window:MakeTab({
+	Name = "Settings",
+	Icon = "",
+	PremiumOnly = false
+})
 Dispenser:AddButton({
 	Name = "Use All Dispensers",
 	Callback = function()
