@@ -9,7 +9,7 @@ OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware
 local Window = OrionLib:MakeWindow({Name = "BinbinvoGaming Hub I Bss", HidePremium = false, SaveConfig = true, ConfigFolder = "BinbinvoGaming Hub", IntroEnabled = true, IntroText = "BinbinvoGaming|Loader",IntroIcon = "rbxassetid://10472045394", Icon = "rbxassetid://10472045394" })
 local Main = Window:MakeTab({
 	Name = "Main",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 getgenv().api = loadstring(game:HttpGet("https://raw.githubusercontent.com/Boxking776/kocmoc/main/api.lua"))()
@@ -20,48 +20,74 @@ for _,v in next, game.workspace.Collectibles:GetChildren() do
 end 
 local Dispenser = Window:MakeTab({
 	Name = "Dispensers",
-	Icon = "",
-	PremiumOnly = false
+	Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
 })
 local Use = Window:MakeTab({
 	Name = "Dices",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Boosts = Window:MakeTab({
 	Name = "Boosts",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Use2 = Window:MakeTab({
 	Name = "Use Buffs",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Tp12 = Window:MakeTab({
 	Name = "Teleports",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Mobs = Window:MakeTab({
 	Name = "Combat",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Mask = Window:MakeTab({
     Name = "Masks",
-    Icon = "",
+    Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 local Visuanal = Window:MakeTab({
 	Name = "Visuals",
-	Icon = "",
+	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 local Settings = Window:MakeTab({
 	Name = "Settings",
-	Icon = "",
-	PremiumOnly = false
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false	  
+})
+Settings:AddSlider({
+	Name = "Slider",
+	Min = 0,
+	Max = 20,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "bananas",
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+Settings:AddToggle({
+	Name = "This is a toggle!",
+	Default = false,
+	Callback = function(Value)
+		CoolToggle:Set(true)
+	end    
+})
+Settings:AddColorpicker({
+	Name = "Colorpicker",
+	Default = Color3.fromRGB(255, 0, 0),
+	Callback = function(Value)
+		ColorPicker:Set(Color3.fromRGB(255,255,255))
+	end	  
 })
 Dispenser:AddButton({
 	Name = "Use All Dispensers",
@@ -391,32 +417,6 @@ Main:AddSlider({
     Callback = function(Value)
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
         end
-})
-Main:AddColorpicker({
-	Name = "Colorpicker",
-	Default = Color3.fromRGB(255, 0, 0),
-	Callback = function(Value)
-		ColorPicker:Set(Color3.fromRGB(255,255,255))
-	end	  
-})
-Main:AddSlider({
-	Name = "Slider",
-	Min = 0,
-	Max = 20,
-	Default = 5,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "bananas",
-	Callback = function(Value)
-		print(Value)
-	end    
-})
-Tab:AddToggle({
-	Name = "This is a toggle!",
-	Default = false,
-	Callback = function(Value)
-		CoolToggle:Set(true)
-	end    
 })
 Main:AddToggle({
     Name = "Auto Dig",
@@ -839,7 +839,7 @@ end
          end
 })
 Main:AddToggle({
-    Name = "Auto Farm [walk]",
+    Name = "Auto Farm [New]",
     Default = false,
     Callback = function(cointr91)
          getgenv().turnoff11 = cointr91
