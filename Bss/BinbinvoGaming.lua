@@ -387,6 +387,14 @@ Main:AddSlider({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
         end
 })
+Tab:AddColorpicker({
+	Name = "Colorpicker",
+	Default = Color3.fromRGB(255, 0, 0),
+	Callback = function(Value)
+		ColorPicker:Set(Color3.fromRGB(255,255,255))
+	end	  
+})
+
 Main:AddToggle({
     Name = "Auto Dig",
     Default = false,
