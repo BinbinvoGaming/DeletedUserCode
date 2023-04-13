@@ -63,37 +63,6 @@ local Settings = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false	  
 })
-Settings:AddBind({
-	Name = "Bind",
-	Default = Enum.KeyCode.E,
-	Hold = false,
-	Callback = function()
-		Bind:Set(Enum.KeyCode.E)
-	end    
-})
-Tab:AddTextbox({
-	Name = "Textbox",
-	Default = input Toggle",
-	TextDisappear = true,
-	Callback = function(Value)
-		print(Value)
-	end	  
-})
-Settings:AddDropdown({
-	Name = "Dropdown",
-	Default = "1",
-	Options = {"1", "2"},
-	Callback = function(Value)
-		Dropdown:Refresh(List<table>,true)
-		Dropdown:Set("dropdown option")
-	end    
-})
-Settings:AddToggle({
-    Name = "Toggle",
-    Default = true,
-    Save = true,
-    Flag = "toggle"
-})
 Settings:AddSlider({
     Name = "Speed",
     Min = 1,
@@ -136,13 +105,6 @@ Settings:AddSlider({
 	ValueName = "bananas",
 	Callback = function(Value)
 		Slider:Set(2)
-	end    
-})
-Settings:AddToggle({
-	Name = "This is a toggle!",
-	Default = false,
-	Callback = function(Value)
-		CoolToggle:Set(true)
 	end    
 })
 Settings:AddColorpicker({
