@@ -387,14 +387,32 @@ Main:AddSlider({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
         end
 })
-Tab:AddColorpicker({
+Main:AddColorpicker({
 	Name = "Colorpicker",
 	Default = Color3.fromRGB(255, 0, 0),
 	Callback = function(Value)
 		ColorPicker:Set(Color3.fromRGB(255,255,255))
 	end	  
 })
-
+Main:AddSlider({
+	Name = "Slider",
+	Min = 0,
+	Max = 20,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "bananas",
+	Callback = function(Value)
+		print(Value)
+	end    
+})
+Tab:AddToggle({
+	Name = "This is a toggle!",
+	Default = false,
+	Callback = function(Value)
+		CoolToggle:Set(true)
+	end    
+})
 Main:AddToggle({
     Name = "Auto Dig",
     Default = false,
