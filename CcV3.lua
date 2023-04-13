@@ -13,4 +13,4 @@ end
 
 warnmessage("BinbinvoGaming", "Script Made By BinbinvoGaming.", 10)
 task.wait(2.5)
-loadstring(game:HttpsGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/MyRestaurantMoblePc.lua'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Mr.lua'))()
