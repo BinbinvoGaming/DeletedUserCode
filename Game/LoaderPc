@@ -1,0 +1,12 @@
+repeat wait() until game:IsLoaded()
+local PlaceId = game.PlaceId
+if PlaceId == 1537690962 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Game3',true))()
+    warn('Execute success')
+elseif PlaceId == 4490140733 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Game2',true))()
+elseif PlaceId == 4490140733 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Game2',true))()
+else
+    game.Players.LocalPlayer:Kick('Not Support this map.')
+end
