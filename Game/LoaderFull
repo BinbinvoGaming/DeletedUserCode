@@ -5,6 +5,8 @@ if PlaceId == 1537690962 then
     warn('Execute success')
 elseif PlaceId == 4490140733 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/MyRestaurant/Loader'))()
+elseif PlaceId == 3101667897 then
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/BuildABoatForTreasure/GoldFarm'))()
 else
     game.Players.LocalPlayer:Kick('Not Support this map.')
 end
