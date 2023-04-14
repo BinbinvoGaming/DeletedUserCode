@@ -1,7 +1,7 @@
 [[ --
-    local a = library:CreateWindow("MaGiXx") -- Argument #1 Title
+    local a = library:CreateWindow("BinbinvoGaming") -- Argument #1 Title
     a.Note.Text = "Join Discord BinbinvoGaimg" -- Note
-    a:SetLinkName("BinbinvoGaming Hub") -- https://1.kelprepl.repl.co/getkey/BinbinvoGamingHub
+    a:SetLinkName("BinbinvoGamingHub") -- https://1.kelprepl.repl.co/getkey/BinbinvoGamingHub
     a:SetScript("https://raw.githubusercontent.com/...")
 ]] 
 
