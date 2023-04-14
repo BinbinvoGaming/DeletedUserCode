@@ -58,37 +58,6 @@ local Visuanal = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-local Settings = Window:MakeTab({
-	Name = "Settings",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false	  
-})
-Settings:AddSlider({
-	Name = "Slider",
-	Min = 0,
-	Max = 20,
-	Default = 5,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "bananas",
-	Callback = function(Value)
-		print(Value)
-	end    
-})
-Settings:AddToggle({
-	Name = "This is a toggle!",
-	Default = false,
-	Callback = function(Value)
-		CoolToggle:Set(true)
-	end    
-})
-Settings:AddColorpicker({
-	Name = "Colorpicker",
-	Default = Color3.fromRGB(255, 0, 0),
-	Callback = function(Value)
-		ColorPicker:Set(Color3.fromRGB(255,255,255))
-	end	  
-})
 Dispenser:AddButton({
 	Name = "Use All Dispensers",
 	Callback = function()
