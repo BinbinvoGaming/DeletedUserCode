@@ -1,0 +1,187 @@
+getgenv().Setting = {
+
+    ["Team"] = "Marines", --Marines,Pirates
+
+    ["Click"] = {
+
+        ["Enable"] = true,
+
+        ["OnLowHealthDisable"] = true,
+
+        ["LowHealth"] = 3000,
+
+    },
+
+    ["SafeZone"] = {
+
+        ["Enable"] = true,
+
+        ["LowHealth"] = 5000,
+
+        ["MaxHealth"] = 12345,
+
+        ["Teleport Y"] = 1000
+
+    },
+
+    ["Invisible"] = false,
+
+    ["GunMethod"] = false, --Not Support
+
+    ["SpamSkill"] = true, -- Will use all skills as fast as possbile ignore holding skills
+
+    ["Weapons"] = {
+
+        ["Melee"] = {
+
+            ["Enable"] = true,
+
+            ["Delay"] = 1,
+
+            ["Skills"] = {
+
+                ["Z"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+               [ "X"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+
+                ["C"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+            },
+
+        },
+
+        ["Blox Fruit"] = {
+
+            ["Enable"] = true,
+
+            ["Delay"] = 2,
+
+            ["Skills"] = {
+
+                ["Z"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 2,
+
+                },
+
+                ["X"] = {
+
+                    ["Enable"] = false,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+
+                ["C"] = {
+
+                    ["Enable"] = false,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+                ["V"] = {
+
+                    ["Enable"] = false,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+                ["F"] = {
+
+                    ["Enable"] = false,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+            },
+
+        },
+
+        ["Gun"] = {
+
+            ["Enable"] = true,
+
+            ["Delay"] = 1,
+
+            ["Skills"] = {
+
+                ["Z"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+                ["X"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+            },
+
+        },
+
+        ["Sword"] = {
+
+            ["Enable"] = true,
+
+            ["Delay"] = 0,
+
+            ["Skills"] = {
+
+                ["Z"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 1,
+
+                },
+
+                ["X"] = {
+
+                    ["Enable"] = true,
+
+                    ["HoldTime"] = 0,
+
+                },
+
+            },
+
+        },
+
+    }
+
+}
+
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BountyShit.lua"))()
