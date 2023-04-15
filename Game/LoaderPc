@@ -11,7 +11,7 @@ elseif PlaceId == 2753915549 or 4442272183 or 7449423635 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/BinbinvoGamingCommmunty/main/Blox%20Fruits'))()
 elseif PlaceId == 3101667897 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/BinbinvoGamingCommmunty/main/Legends%20Of%20Speed'))()
-elseif PlaceId == 3101667897 then
+elseif PlaceId == 6766156863 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Strongmansimulatorgui.lua'))()
 else
     game.Players.LocalPlayer:Kick('Not Support this map.')
