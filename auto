@@ -11,6 +11,6 @@ function warnmessage(title, text, timee)
 	)
 end
 
-warnmessage("BinbinvoGaming", "My script error I will take responsibility. Join our discord (https://discord.gg/m7m5fZDPjb).", 12)
+warnmessage("BinbinvoGaming", "My script error I will be responsible. Join our discord (https://discord.gg/m7m5fZDPjb).", 12)
 task.wait(2.5)
 loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaminng/DeletedUserCode/main/auto2'))()
