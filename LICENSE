@@ -336,4 +336,800 @@ This General Public License does not permit incorporating your program into
 proprietary programs.  If your program is a subroutine library, you may
 consider it more useful to permit linking proprietary applications with the
 library.  If this is what you want to do, use the GNU Lesser General
-Public License instead of this License.
+Public License instead of this License Loader.
+--[[
+    Pet Collection Deleter Script 
+        by Canario#3681
+    
+    - I made this so i could create a bank index for my alts more easily
+    
+    - Deletes any pet types (in your inventory only) that you already have in your inventory or bank with the current exceptions:
+        - Ignores Locked/Hardcore/Exclusive/Event/Titanic Pets 
+        - It classes normal/gold/rb/dm as different types
+]]--
+
+-- Only enable this if your saving multiples for DM index
+local SAVE_FOR_CONVERSIONS = false
+
+-- How often we will request data from the server about what pets are in our bank
+local BANK_CHECK_FREQUENCY_SECONDS = 30
+
+local Networking = require(game.ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client"):WaitForChild("Network"))
+
+LPH_NO_VIRTUALIZE = function(Function) return Function end
+LPH_NO_VIRTUALIZE(function()
+    if (not getgenv().RemoteHooking) then
+        local Network = require(game:GetService("ReplicatedStorage").Library.Client.Network)
+        local functions = Network.Fire, Network.Invoke
+        local old 
+        old = hookfunction(getupvalue(functions, 1) , function(...) return true end)
+        getgenv().RemoteHooking = true
+    end
+end)()
+
+local Library = require(game:GetService("ReplicatedStorage"):WaitForChild("Framework"):WaitForChild("Library"))
+
+local PetList = {}
+local lastBankCheckTime = 0
+local bankPets = {}
+
+for i,v in pairs(Library.Directory.Pets ) do
+    PetList[i] = v.name
+end
+
+function sort_pets(pets)
+    local result = previous or {}
+    
+    for i, pet in ipairs(pets) do
+        local isProtectedPet = false
+        
+        local petName = PetList[pet.id] or tostring(pet.id)
+        
+        if pet.titanic or pet.huge or pet.rarity == "Exclusive" or pet.rarity == "Event" or pet.l or pet.hc then
+            isProtectedPet = true
+        end
+        
+        if not isProtectedPet then
+            local petType = "Normal"
+            if pet.r then petType = "Rainbow" end
+            if pet.g then petType = "Gold" end
+            if pet.dm then petType = "Dark" end
+
+            if not result[petName] then
+                result[petName] = { Normal = {}, Gold = {}, Rainbow = {}, Dark = {} }
+            end
+
+            table.insert(result[petName][petType], pet.uid)
+        end
+    end
+    
+    return result
+end
+
+function get_pets_to_delete(pets, bankpets)
+    local pets_to_delete = {}
+        
+    for pet_name, pet in pairs(pets) do
+        local counts = { Normal = 0, Gold = 0, Rainbow = 0, Dark = 0 }
+        local keys = { "Normal", "Gold", "Rainbow", "Dark" }
+        for _, key in ipairs(keys) do
+            if pet[key] then
+                counts[key] = #pet[key]
+            end
+        end
+        
+        local allowed_dark = 1
+        local allowed_rainbow = 1
+        local allowed_gold = 1
+        local allowed_normal = 1
+        
+        if SAVE_FOR_CONVERSIONS then
+            allowed_dark = 1
+            allowed_rainbow = math.max(1, math.floor(6 * (allowed_dark - counts.Dark)) + 1)
+            allowed_gold = math.max(1, math.floor(6 * (allowed_rainbow - counts.Rainbow)) + 1)
+            allowed_normal = math.max(1, math.floor(6 * (allowed_gold - counts.Gold)) + 1)
+        else
+            for bpet_name, bpet in pairs(bankpets) do
+                if bpet_name == pet_name then
+                    if bpet["Dark"] and #bpet["Dark"] > 0 then allowed_dark = 0 end
+                    if bpet["Rainbow"] and #bpet["Rainbow"] > 0 then allowed_rainbow = 0 end
+                    if bpet["Gold"] and #bpet["Gold"] > 0 then allowed_gold = 0 end
+                    if bpet["Normal"] and #bpet["Normal"] > 0 then allowed_normal = 0 end
+                end
+            end
+        end
+        
+        for i, value in ipairs(pet.Dark) do
+            if i > allowed_dark then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Rainbow) do
+            if i > allowed_rainbow then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Gold) do
+            if i > allowed_gold then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Normal) do
+            if i > allowed_normal then
+                table.insert(pets_to_delete, value)
+            end
+        end
+    end
+
+    return pets_to_delete
+end
+
+local function get_bank_id()
+  local banks = Networking.Invoke("Get My Banks")
+  if not banks or not banks[1] or not banks[1].BUID then
+    error("Failed to retrieve bank ID")
+  end
+  return banks[1].BUID
+end
+
+local function get_bank_pets(bank_id)
+  local bank = Networking.Invoke("Get Bank", bank_id)
+  if not bank or not bank.Storage or not bank.Storage.Pets then
+    error("Failed to retrieve pet info from bank")
+  end
+  return bank.Storage.Pets
+end
+
+local function PetCheck()
+    local invPets = sort_pets(Library.Save.Get().Pets)
+    local currentTime = os.time()
+    if (tonumber(lastBankCheckTime) == 0 or currentTime - lastBankCheckTime >= BANK_CHECK_FREQUENCY_SECONDS) then
+        lastBankCheckTime = currentTime
+        pcall(function()
+            print("Retreiving bank pets")
+            bankPets = sort_pets(get_bank_pets(get_bank_id()))
+        end)
+    end
+    local petsToDelete = get_pets_to_delete(invPets, bankPets)
+    if #petsToDelete > 0 then
+        print("Deleting", #petsToDelete, "pets")
+        Networking.Invoke("Delete Several Pets", petsToDelete)
+    end
+end
+
+pcall(function()
+    bankPets = sort_pets(get_bank_pets(get_bank_id()))
+end)
+
+getgenv().DeleteCollectionExcess = true
+while getgenv().DeleteCollectionExcess and task.wait(1) do
+    PetCheck()
+end
+-- Gui --
+-- Version 1.1 --
+
+-- Instances --
+local CoreGui = game:GetService("StarterGui")
+
+local Tutorial = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local HubTitle = Instance.new("TextBox")
+local Submit = Instance.new("TextButton")
+local Input = Instance.new("TextBox")
+local Exit = Instance.new("TextButton")
+local Key = Instance.new("TextBox")
+local GetKey = Instance.new("TextButton")
+local WrongKey = Instance.new("Frame")
+local WrongKeyText = Instance.new("TextBox")
+local WrongOk = Instance.new("TextButton")
+
+-- Properties --
+
+Tutorial.Name = "Tutorial"
+Tutorial.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Tutorial.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = Tutorial
+main.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+main.Position = UDim2.new(0.10, 0, 0.03, 0)
+main.Size = UDim2.new(0, 206, 0, 100)
+main.Active = true
+main.Draggable = true
+
+HubTitle.Name = "Gui"
+HubTitle.Parent = main
+HubTitle.Text = 'B Genesis V 1.1'
+HubTitle.Position = UDim2.new(0.25, 0, 0.08, 0)
+HubTitle.TextColor3 = Color3.fromRGB(999, 999, 999)
+
+
+Key.Name = "Key"
+Key.Parent = main
+Key.Text = 'Key:'
+Key.Position = UDim2.new(0.125, 0, 0.30, 0)
+Key.TextColor3 = Color3.fromRGB(999, 999, 999)
+
+Exit.Name = "Exit"
+Exit.Parent = main
+Exit.Text = '×'
+Exit.Position = UDim2.new(0.925, 0, 0.05, 0)
+Exit.Size = UDim2.new(0, 10, 0, 10)
+Exit.TextColor3 = Color3.fromRGB(255, 0, 0)
+Exit.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+Exit.TextSize = 11.000
+Exit.MouseButton1Down:connect(function()
+	if main.Visible == true then
+		main.Visible = false
+	end
+end)
+
+Submit.Name = "Submit"
+Submit.Parent = main
+Submit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Submit.Position = UDim2.new(0.85, 0, 0.225, 0)
+Submit.Size = UDim2.new(0, 15, 0, 15)
+Submit.Font = Enum.Font.SourceSans
+Submit.Text = '✓'
+Submit.TextColor3 = Color3.fromRGB(0, 0, 0)
+Submit.TextSize = 15.000
+Submit.MouseButton1Down:connect(function()
+	if Input.Text == "BETA" then
+		main.Visible = false
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/raw-scriptpastebin/raw/main/GENSIS_MAIN'))()
+	else 
+		WrongKey.Visible = true
+		
+		CoreGui:SetCore("SendNotification", {
+			Title = "B Genesis V 1.1";
+			Text = "Wrong Key";
+			Duration = 5;
+			TextColor3 = Color3.fromRGB(255, 255, 255)
+		})
+	end
+end)
+
+Input.Name = "Input"
+Input.Parent = main
+Input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Input.Position = UDim2.new(0.2, 0, 0.20, 0)
+Input.Size = UDim2.new(0, 120, 0, 20)
+Input.Font = Enum.Font.SourceSans
+Input.Text = ""
+Input.TextColor3 = Color3.fromRGB(0, 0, 0)
+Input.TextSize = 11.000
+
+GetKey.Name= "GetKey"
+GetKey.Parent = main
+GetKey.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GetKey.Position = UDim2.new(0.2, 0, 0.55, 0)
+GetKey.Size = UDim2.new(0, 120, 0, 20)
+GetKey.Font = Enum.Font.SourceSans
+GetKey.Text = 'Copy Get Key Link'
+GetKey.TextColor3 = Color3.fromRGB(0, 0, 0)
+GetKey.TextSize = 11.000
+GetKey.MouseButton1Down:connect(function()
+	setclipboard("https://discord.gg/QZQgNQNATp")
+	
+	CoreGui:SetCore("SendNotification", {
+			Title = "B Genesis V 1.1";
+			Text = "Discord Link Copied";
+			Duration = 5;
+			TextColor3 = Color3.fromRGB(255, 255, 255)
+			})
+end)
+
+WrongKey.Name= "Wrong Key"
+WrongKey.Parent = Tutorial
+WrongKey.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+WrongKey.Position = UDim2.new(0.315, 0, 0.045, 0)
+WrongKey.Size = UDim2.new(0, 100, 0, 75)
+WrongKey.Visible = false
+WrongKey.Active = true
+WrongKey.Draggable = true
+
+WrongKeyText.Name = "WrongKeyText"
+WrongKeyText.Parent = WrongKey
+WrongKeyText.Text = 'Incorrect Key'
+WrongKeyText.Position = UDim2.new(0.525, 0, 0.4, 0)
+WrongKeyText.TextColor3 = Color3.fromRGB(999, 999, 999)
+
+WrongOk.Name = "Ok"
+WrongOk.Parent = WrongKey
+WrongOk.Text = 'Ok'
+WrongOk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+WrongOk.Position = UDim2.new(0.35, 0, 0.6, 0)
+WrongOk.Size = UDim2.new(0, 30, 0, 15)
+WrongOk.Font = Enum.Font.SourceSans
+WrongOk.TextSize = 11.000
+WrongOk.TextColor3 = Color3.fromRGB(1, 1, 1)
+WrongOk.MouseButton1Down:connect(function()
+	WrongKey.Visible = false
+	
+end)--[[
+    Pet Collection Deleter Script 
+        by Canario#3681
+    
+    - I made this so i could create a bank index for my alts more easily
+    
+    - Deletes any pet types (in your inventory only) that you already have in your inventory or bank with the current exceptions:
+        - Ignores Locked/Hardcore/Exclusive/Event/Titanic Pets 
+        - It classes normal/gold/rb/dm as different types
+]]--
+
+-- Only enable this if your saving multiples for DM index
+local SAVE_FOR_CONVERSIONS = false
+
+-- How often we will request data from the server about what pets are in our bank
+local BANK_CHECK_FREQUENCY_SECONDS = 30
+
+local Networking = require(game.ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client"):WaitForChild("Network"))
+
+LPH_NO_VIRTUALIZE = function(Function) return Function end
+LPH_NO_VIRTUALIZE(function()
+    if (not getgenv().RemoteHooking) then
+        local Network = require(game:GetService("ReplicatedStorage").Library.Client.Network)
+        local functions = Network.Fire, Network.Invoke
+        local old 
+        old = hookfunction(getupvalue(functions, 1) , function(...) return true end)
+        getgenv().RemoteHooking = true
+    end
+end)()
+
+local Library = require(game:GetService("ReplicatedStorage"):WaitForChild("Framework"):WaitForChild("Library"))
+
+local PetList = {}
+local lastBankCheckTime = 0
+local bankPets = {}
+
+for i,v in pairs(Library.Directory.Pets ) do
+    PetList[i] = v.name
+end
+
+function sort_pets(pets)
+    local result = previous or {}
+    
+    for i, pet in ipairs(pets) do
+        local isProtectedPet = false
+        
+        local petName = PetList[pet.id] or tostring(pet.id)
+        
+        if pet.titanic or pet.huge or pet.rarity == "Exclusive" or pet.rarity == "Event" or pet.l or pet.hc then
+            isProtectedPet = true
+        end
+        
+        if not isProtectedPet then
+            local petType = "Normal"
+            if pet.r then petType = "Rainbow" end
+            if pet.g then petType = "Gold" end
+            if pet.dm then petType = "Dark" end
+
+            if not result[petName] then
+                result[petName] = { Normal = {}, Gold = {}, Rainbow = {}, Dark = {} }
+            end
+
+            table.insert(result[petName][petType], pet.uid)
+        end
+    end
+    
+    return result
+end
+
+function get_pets_to_delete(pets, bankpets)
+    local pets_to_delete = {}
+        
+    for pet_name, pet in pairs(pets) do
+        local counts = { Normal = 0, Gold = 0, Rainbow = 0, Dark = 0 }
+        local keys = { "Normal", "Gold", "Rainbow", "Dark" }
+        for _, key in ipairs(keys) do
+            if pet[key] then
+                counts[key] = #pet[key]
+            end
+        end
+        
+        local allowed_dark = 1
+        local allowed_rainbow = 1
+        local allowed_gold = 1
+        local allowed_normal = 1
+        
+        if SAVE_FOR_CONVERSIONS then
+            allowed_dark = 1
+            allowed_rainbow = math.max(1, math.floor(6 * (allowed_dark - counts.Dark)) + 1)
+            allowed_gold = math.max(1, math.floor(6 * (allowed_rainbow - counts.Rainbow)) + 1)
+            allowed_normal = math.max(1, math.floor(6 * (allowed_gold - counts.Gold)) + 1)
+        else
+            for bpet_name, bpet in pairs(bankpets) do
+                if bpet_name == pet_name then
+                    if bpet["Dark"] and #bpet["Dark"] > 0 then allowed_dark = 0 end
+                    if bpet["Rainbow"] and #bpet["Rainbow"] > 0 then allowed_rainbow = 0 end
+                    if bpet["Gold"] and #bpet["Gold"] > 0 then allowed_gold = 0 end
+                    if bpet["Normal"] and #bpet["Normal"] > 0 then allowed_normal = 0 end
+                end
+            end
+        end
+        
+        for i, value in ipairs(pet.Dark) do
+            if i > allowed_dark then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Rainbow) do
+            if i > allowed_rainbow then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Gold) do
+            if i > allowed_gold then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Normal) do
+            if i > allowed_normal then
+                table.insert(pets_to_delete, value)
+            end
+        end
+    end
+
+    return pets_to_delete
+end
+
+local function get_bank_id()
+  local banks = Networking.Invoke("Get My Banks")
+  if not banks or not banks[1] or not banks[1].BUID then
+    error("Failed to retrieve bank ID")
+  end
+  return banks[1].BUID
+end
+
+local function get_bank_pets(bank_id)
+  local bank = Networking.Invoke("Get Bank", bank_id)
+  if not bank or not bank.Storage or not bank.Storage.Pets then
+    error("Failed to retrieve pet info from bank")
+  end
+  return bank.Storage.Pets
+end
+
+local function PetCheck()
+    local invPets = sort_pets(Library.Save.Get().Pets)
+    local currentTime = os.time()
+    if (tonumber(lastBankCheckTime) == 0 or currentTime - lastBankCheckTime >= BANK_CHECK_FREQUENCY_SECONDS) then
+        lastBankCheckTime = currentTime
+        pcall(function()
+            print("Retreiving bank pets")
+            bankPets = sort_pets(get_bank_pets(get_bank_id()))
+        end)
+    end
+    local petsToDelete = get_pets_to_delete(invPets, bankPets)
+    if #petsToDelete > 0 then
+        print("Deleting", #petsToDelete, "pets")
+        Networking.Invoke("Delete Several Pets", petsToDelete)
+    end
+end
+
+pcall(function()
+    bankPets = sort_pets(get_bank_pets(get_bank_id()))
+end)
+
+getgenv().DeleteCollectionExcess = true
+while getgenv().DeleteCollectionExcess and task.wait(1) do
+    PetCheck()
+end
+-- Gui --
+-- Version 1.1 --
+
+-- Instances --
+local CoreGui = game:GetService("StarterGui")
+
+local Tutorial = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local HubTitle = Instance.new("TextBox")
+local Submit = Instance.new("TextButton")
+local Input = Instance.new("TextBox")
+local Exit = Instance.new("TextButton")
+local Key = Instance.new("TextBox")
+local GetKey = Instance.new("TextButton")
+local WrongKey = Instance.new("Frame")
+local WrongKeyText = Instance.new("TextBox")
+local WrongOk = Instance.new("TextButton")
+
+-- Properties --
+
+Tutorial.Name = "Tutorial"
+Tutorial.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+Tutorial.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+main.Name = "main"
+main.Parent = Tutorial
+main.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+main.Position = UDim2.new(0.10, 0, 0.03, 0)
+main.Size = UDim2.new(0, 206, 0, 100)
+main.Active = true
+main.Draggable = true
+
+HubTitle.Name = "Gui"
+HubTitle.Parent = main
+HubTitle.Text = 'B Genesis V 1.1'
+HubTitle.Position = UDim2.new(0.25, 0, 0.08, 0)
+HubTitle.TextColor3 = Color3.fromRGB(999, 999, 999)
+
+
+Key.Name = "Key"
+Key.Parent = main
+Key.Text = 'Key:'
+Key.Position = UDim2.new(0.125, 0, 0.30, 0)
+Key.TextColor3 = Color3.fromRGB(999, 999, 999)
+
+Exit.Name = "Exit"
+Exit.Parent = main
+Exit.Text = '×'
+Exit.Position = UDim2.new(0.925, 0, 0.05, 0)
+Exit.Size = UDim2.new(0, 10, 0, 10)
+Exit.TextColor3 = Color3.fromRGB(255, 0, 0)
+Exit.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+Exit.TextSize = 11.000
+Exit.MouseButton1Down:connect(function()
+	if main.Visible == true then
+		main.Visible = false
+	end
+end)
+
+Submit.Name = "Submit"
+Submit.Parent = main
+Submit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Submit.Position = UDim2.new(0.85, 0, 0.225, 0)
+Submit.Size = UDim2.new(0, 15, 0, 15)
+Submit.Font = Enum.Font.SourceSans
+Submit.Text = '✓'
+Submit.TextColor3 = Color3.fromRGB(0, 0, 0)
+Submit.TextSize = 15.000
+Submit.MouseButton1Down:connect(function()
+	if Input.Text == "BETA" then
+		main.Visible = false
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/raw-scriptpastebin/raw/main/GENSIS_MAIN'))()
+	else 
+		WrongKey.Visible = true
+		
+		CoreGui:SetCore("SendNotification", {
+			Title = "B Genesis V 1.1";
+			Text = "Wrong Key";
+			Duration = 5;
+			TextColor3 = Color3.fromRGB(255, 255, 255)
+		})
+	end
+end)
+
+Input.Name = "Input"
+Input.Parent = main
+Input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Input.Position = UDim2.new(0.2, 0, 0.20, 0)
+Input.Size = UDim2.new(0, 120, 0, 20)
+Input.Font = Enum.Font.SourceSans
+Input.Text = ""
+Input.TextColor3 = Color3.fromRGB(0, 0, 0)
+Input.TextSize = 11.000
+
+GetKey.Name= "GetKey"
+GetKey.Parent = main
+GetKey.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+GetKey.Position = UDim2.new(0.2, 0, 0.55, 0)
+GetKey.Size = UDim2.new(0, 120, 0, 20)
+GetKey.Font = Enum.Font.SourceSans
+GetKey.Text = 'Copy Get Key Link'
+GetKey.TextColor3 = Color3.fromRGB(0, 0, 0)
+GetKey.TextSize = 11.000
+GetKey.MouseButton1Down:connect(function()
+	setclipboard("https://discord.gg/QZQgNQNATp")
+	
+	CoreGui:SetCore("SendNotification", {
+			Title = "B Genesis V 1.1";
+			Text = "Discord Link Copied";
+			Duration = 5;
+			TextColor3 = Color3.fromRGB(255, 255, 255)
+			})
+end)
+
+WrongKey.Name= "Wrong Key"
+WrongKey.Parent = Tutorial
+WrongKey.BackgroundColor3 = Color3.fromRGB(1, 1, 1)
+WrongKey.Position = UDim2.new(0.315, 0, 0.045, 0)
+WrongKey.Size = UDim2.new(0, 100, 0, 75)
+WrongKey.Visible = false
+WrongKey.Active = true
+WrongKey.Draggable = true
+
+WrongKeyText.Name = "WrongKeyText"
+WrongKeyText.Parent = WrongKey
+WrongKeyText.Text = 'Incorrect Key'
+WrongKeyText.Position = UDim2.new(0.525, 0, 0.4, 0)
+WrongKeyText.TextColor3 = Color3.fromRGB(999, 999, 999)
+
+WrongOk.Name = "Ok"
+WrongOk.Parent = WrongKey
+WrongOk.Text =--[[
+    Pet Collection Deleter Script 
+        by Canario#3681
+    
+    - I made this so i could create a bank index for my alts more easily
+    
+    - Deletes any pet types (in your inventory only) that you already have in your inventory or bank with the current exceptions:
+        - Ignores Locked/Hardcore/Exclusive/Event/Titanic Pets 
+        - It classes normal/gold/rb/dm as different types
+]]--
+
+-- Only enable this if your saving multiples for DM index
+local SAVE_FOR_CONVERSIONS = false
+
+-- How often we will request data from the server about what pets are in our bank
+local BANK_CHECK_FREQUENCY_SECONDS = 30
+
+local Networking = require(game.ReplicatedStorage:WaitForChild("Library"):WaitForChild("Client"):WaitForChild("Network"))
+
+LPH_NO_VIRTUALIZE = function(Function) return Function end
+LPH_NO_VIRTUALIZE(function()
+    if (not getgenv().RemoteHooking) then
+        local Network = require(game:GetService("ReplicatedStorage").Library.Client.Network)
+        local functions = Network.Fire, Network.Invoke
+        local old 
+        old = hookfunction(getupvalue(functions, 1) , function(...) return true end)
+        getgenv().RemoteHooking = true
+    end
+end)()
+
+local Library = require(game:GetService("ReplicatedStorage"):WaitForChild("Framework"):WaitForChild("Library"))
+
+local PetList = {}
+local lastBankCheckTime = 0
+local bankPets = {}
+
+for i,v in pairs(Library.Directory.Pets ) do
+    PetList[i] = v.name
+end
+
+function sort_pets(pets)
+    local result = previous or {}
+    
+    for i, pet in ipairs(pets) do
+        local isProtectedPet = false
+        
+        local petName = PetList[pet.id] or tostring(pet.id)
+        
+        if pet.titanic or pet.huge or pet.rarity == "Exclusive" or pet.rarity == "Event" or pet.l or pet.hc then
+            isProtectedPet = true
+        end
+        
+        if not isProtectedPet then
+            local petType = "Normal"
+            if pet.r then petType = "Rainbow" end
+            if pet.g then petType = "Gold" end
+            if pet.dm then petType = "Dark" end
+
+            if not result[petName] then
+                result[petName] = { Normal = {}, Gold = {}, Rainbow = {}, Dark = {} }
+            end
+
+            table.insert(result[petName][petType], pet.uid)
+        end
+    end
+    
+    return result
+end
+
+function get_pets_to_delete(pets, bankpets)
+    local pets_to_delete = {}
+        
+    for pet_name, pet in pairs(pets) do
+        local counts = { Normal = 0, Gold = 0, Rainbow = 0, Dark = 0 }
+        local keys = { "Normal", "Gold", "Rainbow", "Dark" }
+        for _, key in ipairs(keys) do
+            if pet[key] then
+                counts[key] = #pet[key]
+            end
+        end
+        
+        local allowed_dark = 1
+        local allowed_rainbow = 1
+        local allowed_gold = 1
+        local allowed_normal = 1
+        
+        if SAVE_FOR_CONVERSIONS then
+            allowed_dark = 1
+            allowed_rainbow = math.max(1, math.floor(6 * (allowed_dark - counts.Dark)) + 1)
+            allowed_gold = math.max(1, math.floor(6 * (allowed_rainbow - counts.Rainbow)) + 1)
+            allowed_normal = math.max(1, math.floor(6 * (allowed_gold - counts.Gold)) + 1)
+        else
+            for bpet_name, bpet in pairs(bankpets) do
+                if bpet_name == pet_name then
+                    if bpet["Dark"] and #bpet["Dark"] > 0 then allowed_dark = 0 end
+                    if bpet["Rainbow"] and #bpet["Rainbow"] > 0 then allowed_rainbow = 0 end
+                    if bpet["Gold"] and #bpet["Gold"] > 0 then allowed_gold = 0 end
+                    if bpet["Normal"] and #bpet["Normal"] > 0 then allowed_normal = 0 end
+                end
+            end
+        end
+        
+        for i, value in ipairs(pet.Dark) do
+            if i > allowed_dark then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Rainbow) do
+            if i > allowed_rainbow then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Gold) do
+            if i > allowed_gold then
+                table.insert(pets_to_delete, value)
+            end
+        end
+        
+        for i, value in ipairs(pet.Normal) do
+            if i > allowed_normal then
+                table.insert(pets_to_delete, value)
+            end
+        end
+    end
+
+    return pets_to_delete
+end
+
+local function get_bank_id()
+  local banks = Networking.Invoke("Get My Banks")
+  if not banks or not banks[1] or not banks[1].BUID then
+    error("Failed to retrieve bank ID")
+  end
+  return banks[1].BUID
+end
+
+local function get_bank_pets(bank_id)
+  local bank = Networking.Invoke("Get Bank", bank_id)
+  if not bank or not bank.Storage or not bank.Storage.Pets then
+    error("Failed to retrieve pet info from bank")
+  end
+  return bank.Storage.Pets
+end
+
+local function PetCheck()
+    local invPets = sort_pets(Library.Save.Get().Pets)
+    local currentTime = os.time()
+    if (tonumber(lastBankCheckTime) == 0 or currentTime - lastBankCheckTime >= BANK_CHECK_FREQUENCY_SECONDS) then
+        lastBankCheckTime = currentTime
+        pcall(function()
+            print("Retreiving bank pets")
+            bankPets = sort_pets(get_bank_pets(get_bank_id()))
+        end)
+    end
+    local petsToDelete = get_pets_to_delete(invPets, bankPets)
+    if #petsToDelete > 0 then
+        print("Deleting", #petsToDelete, "pets")
+        Networking.Invoke("Delete Several Pets", petsToDelete)
+    end
+end
+
+pcall(function()
+    bankPets = sort_pets(get_bank_pets(get_bank_id()))
+end)
+
+getgenv().DeleteCollectionExcess = true
+while getgenv().DeleteCollectionExcess and task.wait(1) do
+    PetCheck()
+end
+ 'Ok'
+WrongOk.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+WrongOk.Position = UDim2.new(0.35, 0, 0.6, 0)
+WrongOk.Size = UDim2.new(0, 30, 0, 15)
+WrongOk.Font = Enum.Font.SourceSans
+WrongOk.TextSize = 11.000
+WrongOk.TextColor3 = Color3.fromRGB(1, 1, 1)
+WrongOk.MouseButton1Down:connect(function()
+	WrongKey.Visible = false
+	
+end)
