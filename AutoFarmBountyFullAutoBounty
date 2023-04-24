@@ -1,0 +1,111 @@
+getgenv().Setting = {
+    ["Team"] = "Marines", --Marines,Pirates
+    ["Webhook"] = {
+        ["Enabled"] = true,
+        ["Url Webhook"] = "https://discord.com/api/webhooks/1053894914536124507/s3t9UskqXpAZvs44jcQdBO2Kmzgi6voaAhnVBWrxbKWUc4L9FBGOwzMnq3qqFlBImEde", --Your Url
+    }, 
+    ["Click"] = {
+        ["Enable"] = true,
+        ["OnLowHealthDisable"] = false,
+        ["LowHealth"] = 8000,
+    },
+    ["SafeZone"] = {
+        ["Enable"] = true,
+        ["LowHealth"] = 5000,
+        ["MaxHealth"] = 8000,
+        ["Teleport Y"] = 1000
+    },
+    ["Race V4"] = {
+        ["Enable"] = true,
+    },
+    ["Invisible"] = true,
+    ["GunMethod"] = true, --Support Only Melee And Gun,Not Invisible, Turn On Enabled Gun and Melee Please
+    ["SpamSkill"] = true, -- Will use all skills as fast as possbile ignore holding skills
+    ["Weapons"] = {
+        ["Melee"] = {
+            ["Enable"] = true,
+            ["Delay"] = 3,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+               [ "X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+        ["Blox Fruit"] = {
+            ["Enable"] = false,
+            ["Delay"] = 3,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 2,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 2,
+                },
+
+                ["C"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+                ["V"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+                ["F"] = {
+                    ["Enable"] = false,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+        ["Gun"] = {
+            ["Enable"] = true,
+            ["Delay"] = 3,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+        ["Sword"] = {
+            ["Enable"] = true,
+            ["Delay"] = 1,
+            ["Skills"] = {
+                ["Z"] = {
+                    ["Enable"] = false,
+                    ["HoldTime"] = 1,
+                },
+                ["X"] = {
+                    ["Enable"] = true,
+                    ["HoldTime"] = 0,
+                },
+            },
+        },
+    }
+}
+repeat wait() until game:IsLoaded()
+--Config o tren  tu chinh   config ma dung fuk u
+-- bo config o duoi day
+--while task.wait() do game:GetService("RunService"):Set3dRenderingEnabled(true) end
+spawn(function()
+    repeat wait() until game:IsLoaded()
+    while task.wait() do game:GetService("RunService"):Set3dRenderingEnabled(true) end
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BountyShit.lua"))()loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/SitinkHubAutoBounty'))()_G.ChatAferKill = {"gg", "ezzz", "test"} -- Remove this line if you are not using
+_G.Team = "Pirate"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AloneBiNgu/AloneHub/main/BountyV2.lua"))()loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/BloxFruit/AutoBounty/Loader'))()
