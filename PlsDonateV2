@@ -26,6 +26,56 @@ local Settings = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local Credits = Window:MakeTab({
+	Name = "Credits",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Credits:AddParagraph("Credits to","BinbinvoGaming Script By Binbinvogaming")
+
+Vip:AddButton({
+	Name = "Donate Fake",
+	Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/PlsDonate/PlsDonateV3'))()
+    end
+})
+
+Settings:AddSlider({
+    Name = "Speed",
+    Min = 1,
+    Max = 300,
+    Default = 150,
+    Color = Color3.fromRGB(230,255,255),
+    Increment = 1,
+    ValueName = " Speed",
+    Callback = function(preston)
+        _G.speed = preston
+    end    
+})
+
+Settings:AddToggle({
+    Name = "Speed hack",
+    Default = false,
+    Callback = function(prestonon)
+        while prestonon == true do
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = _G.speed wait(0.2) end
+        end    
+})
+
+Settings:AddSlider({
+    Name = "Jump Power",
+    Min = 0,
+    Max = 2000,
+    Default = 100,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "power",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+        end
+})
+
 Tab:AddTextbox({
 	Name = "Donor's Username",
 	Default = "",
