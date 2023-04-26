@@ -14,6 +14,17 @@ local Tab2 = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local Vip = Window:MakeTab({
+	Name = "Donate Fake",
+	Icon = "rbxassetid://5480743826",
+	PremiumOnly = false
+})
+
+local Settings = Window:MakeTab({
+	Name = "Settings",
+	Icon = "rbxassetid://8950621656",
+	PremiumOnly = false
+})
 
 Tab:AddTextbox({
 	Name = "Donor's Username",
