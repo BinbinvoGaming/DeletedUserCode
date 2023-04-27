@@ -1,0 +1,61 @@
+
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/Source.lua"))()
+local entity = Spawner.createEntity({
+    CustomName = "BinbinvoGaming",
+    Model = "https://github.com/DeividComSono/DoorsRoblox/blob/main/AmbushMoving.rbxm?raw=true", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
+    Speed = 10,
+    MoveDelay = 3,
+    HeightOffset = 0,
+    CanKill = true,
+    KillRange = 50,
+    SpawnInFront = false,
+    ShatterLights = true,
+    FlickerLights = {
+        Enabled = true,
+        Duration = 1
+    },
+    Cycles = {
+        Min = 1,
+        Max = 4,
+        Delay = 1
+    },
+    CamShake = {
+        Enabled = true,
+        Values = {1.5, 20, 0.1, 1},
+        Range = 100
+    },
+    ResistCrucifix = false,
+    BreakCrucifix = true,
+    DeathMessage = {"You died to who you call BinbinvoGaming...", "I wish you 400 vines"},
+    IsCuriousLight = false
+})
+
+entity.Debug.OnEntitySpawned = function()
+    print("Entity has spawned")
+end
+
+entity.Debug.OnEntityDespawned = function()
+    print("Entity has despawned")
+end
+
+entity.Debug.OnEntityStartMoving = function()
+    print("Entity started moving")
+end
+
+entity.Debug.OnEntityFinishedRebound = function()
+    print("Entity finished rebound")
+end
+
+entity.Debug.OnEntityEnteredRoom = function(room)
+    print("Entity entered room:", room)
+end
+
+entity.Debug.OnLookAtEntity = function()
+    print("Player looking at entity")
+end
+
+entity.Debug.OnDeath = function()
+    print("Player has died")
+end
+
+Spawner.runEntity(entity)
