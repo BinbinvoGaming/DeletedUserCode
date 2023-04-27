@@ -1,12 +1,12 @@
 local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/Source.lua"))()
 local entity = Spawner.createEntity({
-    CustomName = "Ambush",
-    Model = "https://github.com/DeividComSono/DoorsRoblox/blob/main/AmbushMoving.rbxm?raw=true", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
-    Speed = 360,
-    MoveDelay = 3,
+    CustomName = "Rush",
+    Model = "https://github.com/RegularVynixu/Utilities/blob/main/Doors/Entity%20Spawner/Assets/Entities/Rush.rbxm?raw=true", -- Your entity's model url here ("rbxassetid://1234567890" or GitHub raw url)
+    Speed = 100,
+    MoveDelay = 2,
     HeightOffset = 0,
     CanKill = true,
-    KillRange = 50,
+    KillRange = 25,
     SpawnInFront = false,
     ShatterLights = true,
     FlickerLights = {
@@ -15,8 +15,8 @@ local entity = Spawner.createEntity({
     },
     Cycles = {
         Min = 1,
-        Max = 4,
-        Delay = 1
+        Max = 1,
+        Delay = 2
     },
     CamShake = {
         Enabled = true,
@@ -25,10 +25,9 @@ local entity = Spawner.createEntity({
     },
     ResistCrucifix = false,
     BreakCrucifix = true,
-    DeathMessage = {"You died to who you call Ambush...", "It is a tricky one.", "Use what you learned from Rush!"},
+    DeathMessage = {"It seems you are having trouble with Rush...", "The lights will always flicker when its near.", "Whenever this happens, find a hiding spot!"},
     IsCuriousLight = false
 })
-
 entity.Debug.OnEntitySpawned = function()
     print("Entity has spawned")
 end
