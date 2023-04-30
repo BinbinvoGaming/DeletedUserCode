@@ -59,3 +59,65 @@ Main:AddSlider({
         game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
       end
 })
+
+Main:AddSlider({
+    Name = "Muliplier",
+    Min = 0,
+    Max = 100,
+    Default = 100,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "power",
+    Callback = function(Value)
+        _G.multipier = value
+      end
+})
+
+Main:AddToggle({
+    Name = "Auto Farm V1 [NEW]",
+    Default = false,
+    Callback = function(cointr)
+         _G.On = value
+	HumanoidRootPart.CFrame = CFrame.new(-79.9094696, 19.8263607, 8124.82129, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+	wait(0.1)
+	task_defer(function()
+		game.RunService.RenderStepped:connect(function()
+			task.wait(0.1)
+			if _G.On then
+ 			HumanoidRootPart.CFrame = CFrame.new(-79.9094696, 19.8263607, 8124.82129, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				fireproximityprompt(_G.Prox, 0)
+        end
+})
+
+Main:AddToggle({
+    Name = "Auto Farm V2 [NEW]",
+    Default = false,
+    Callback = function(cointr)
+         _G.On2 = value
+	HumanoidRootPart.CFrame = CFrame.new(-79.9094696, 19.8263607, 8124.82129, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+	HumanoidRootPart.Anchored = false
+	wait(0.1)
+	task_defer(function()
+		game.RunService.RenderStepped:connect(function()
+			if _G.On2 then
+			    workspace.Gravity = math.huge
+			    HumanoidRootPart.CFrame = CFrame.new(-79.9094696, 19.8263607, 8124.82129, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+			    fireproximityprompt(_G.Prox, 0)
+			else
+			    workspace.Gravity = 196.2 
+        end
+})
+
+Main:AddToggle({
+    Name = "Auto strength",
+    Default = false,
+    Callback = function(cointr)
+         _G.auto = value
+	if _G.auto then
+		pcall(function() game:GetService("CoreGui").PurchasePromptApp.Enabled = false end)
+		task_defer(autoworkout)
+	else
+			pcall(function() game:GetService("CoreGui").PurchasePromptApp.Enabled = true end)
+        end
+})
+
