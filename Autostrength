@@ -1,0 +1,6 @@
+_G.auto = value
+	if _G.auto then
+		pcall(function() game:GetService("CoreGui").PurchasePromptApp.Enabled = false end)
+		task_defer(autoworkout)
+	else
+			pcall(function() game:GetService("CoreGui").PurchasePromptApp.Enabled = true end)
