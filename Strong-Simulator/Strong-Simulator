@@ -1,0 +1,61 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+OrionLib:MakeNotification({
+	Name = "BinbinvoGaming Hub",
+	Content = "Welcome to BinbinvoGaming Hub",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+local Window = OrionLib:MakeWindow({Name = "BinbinvoGaming Hub - Strongman Simulator", HidePremium = false, SaveConfig = true, ConfigFolder = "BinbinvoGaming Hub", IntroEnabled = true, IntroText = "BinbinvoGaming|Loader",IntroIcon = "rbxassetid://10472045394", Icon = "rbxassetid://10472045394" })
+
+local Main = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://5480743826",
+	PremiumOnly = false
+})
+
+local Settings = Window:MakeTab({
+	Name = "Settings Script",
+	Icon = "rbxassetid://5480743826",
+	PremiumOnly = false
+})
+
+local UI = Window:MakeTab({
+	Name = "UI",
+	Icon = "rbxassetid://5480743826",
+	PremiumOnly = false
+})
+
+Main:AddSlider({
+    Name = "Speed",
+    Min = 1,
+    Max = 300,
+    Default = 150,
+    Color = Color3.fromRGB(230,255,255),
+    Increment = 1,
+    ValueName = " Speed",
+    Callback = function(preston)
+        _G.speed = preston
+    end    
+})
+Main:AddToggle({
+    Name = "Speed hack",
+    Default = false,
+    Callback = function(prestonon)
+        while prestonon == true do
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = _G.speed wait(0.2) end
+        end    
+})
+Main:AddSlider({
+    Name = "Jump Power",
+    Min = 0,
+    Max = 2000,
+    Default = 100,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "power",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+      end
+})
