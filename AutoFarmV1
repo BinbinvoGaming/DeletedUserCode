@@ -1,0 +1,13 @@
+_G.On = value
+	HumanoidRootPart.CFrame = CFrame.new(-79.9094696, 19.8263607, 8124.82129, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+	wait(0.1)
+	task_defer(function()
+		game.RunService.RenderStepped:connect(function()
+			task.wait(0.1)
+			if _G.On then
+				HumanoidRootPart.CFrame = CFrame.new(-79.9094696, 19.8263607, 8124.82129, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+				fireproximityprompt(_G.Prox, 0)
+			end
+		end)
+	end)
+end)
