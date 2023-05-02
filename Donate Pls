@@ -20,18 +20,6 @@ local Tab2 = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Support = Window:MakeTab({
-	Name = "Support Execute",
-	Icon = "rbxassetid://5480743826",
-	PremiumOnly = false
-})
-
-local Settings = Window:MakeTab({
-	Name = "Settings",
-	Icon = "rbxassetid://5480743826",
-	PremiumOnly = false
-})
-
 local ColorPicker = Window:MakeTab({
 	Name = "ColorPicker",
 	Icon = "rbxassetid://8950621656",
@@ -1206,115 +1194,9 @@ Tab2:AddButton({
   	end    
 })
 
-Settings:AddButton({
-	Name = "Moble",
-	Callback = function()
-      		loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Game/LoaderFull'))()
-  	end    
-})
 
-local Section1 = Settings:AddSection({
-	Name = "Moble Support Game"
-})
 
-local Section2 = Settings:AddSection({
-	Name = "Bss"
-})
-
-local Section3 = Settings:AddSection({
-	Name = "My Restaurant"
-})
-
-local Section4 = Settings:AddSection({
-	Name = "Build  A Boat For Treasure"
-})
-
-Settings:AddButton({
-	Name = "Pc",
-	Callback = function()
-      		loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/Game/LoaderPc'))()
-  	end    
-})
-
-local Section5 = Settings:AddSection({
-	Name = "Pc Support Game"
-})
-
-local Section6 = Settings:AddSection({
-	Name = "Blox Fruits"
-})
-
-local Section7 = Settings:AddSection({
-	Name = "Legends of speed"
-})
-
-local Section8 = Settings:AddSection({
-	Name = "Jailbreak"
-})
-
-local Section9 = Settings:AddSection({
-	Name = "Ninja Legends"
-})
-
-local Section10 = Settings:AddSection({
-	Name = "Build A Boat For Treasure"
-})
-
-Support:AddButton({
-	Name = "Krnl Moble",
-	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/Chillz-s-scripts/main/KRNL%20UI%20Remake.lua"))()
-  	end    
-})
-
-Support:AddButton({
-	Name = "Arceus V3 Moble",
-	Callback = function()
-      		loadstring(game:HttpGet('https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20X%20V3'))()
-  	end    
-})
-
-local Section11 = Support:AddSection({
-	Name = "Krnl"
-})
-
-local Section12 = Support:AddSection({
-	Name = "Synapse X"
-})
-
-local Section13 = Support:AddSection({
-	Name = "Evon"
-})
-
-local Section14 = Support:AddSection({
-	Name = "Arceus X"
-})
-
-local Section15 = Support:AddSection({
-	Name = "Kiwi X"
-})
-
-local Section16 = Support:AddSection({
-	Name = "Electron"
-})
-
-local Section17 = Support:AddSection({
-	Name = "Fluxus"
-})
-
-local Section18 = Support:AddSection({
-	Name = "Oxygen U"
-})
-
-local Section19 = Support:AddSection({
-	Name = "Comet"
-})
-
-local Section20 = Support:AddSection({
-	Name = "Coco Z"
-})
-
-ColorPicker:AddColorpicker({
+Tab2:AddColorpicker({
 	Name = "Colorpicker",
 	Default = Color3.fromRGB(255, 0, 0),
 	Callback = function(Value)
