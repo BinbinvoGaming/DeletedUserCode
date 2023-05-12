@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local LoadKey = loadstring(game:HttpGet("https://pastebin.com/raw/QjbJLNCK",true))()
-local Window = OrionLib:MakeWindow({Name = "BINBiNVO
-Gui v1 PREMIUM key system", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local LoadKey = loadstring(game:HttpGet("https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/KeyScriptKrnl",true))()
+local Window = OrionLib:MakeWindow({Name = "Key Steam Krnl New
+Free", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 local CurrentKey = ""
 
 getgenv().done = false;
@@ -33,10 +33,6 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Section = Tab:AddSection({
-	Name = "Script Locked"
-})
-
 Tab:AddTextbox({
 	Name = "Key",
 	Default = "",
@@ -47,18 +43,10 @@ Tab:AddTextbox({
 	end	  
 })
 
-local Section2 = Tab:AddSection({
-	Name = "Get Key - https://workink.net/2L8/GetkeyPremiumGui"
-})
-
-local Section3 = Tab:AddSection({
-	Name = "We appreciate your understanding. 💪💪"
-})
-
 Tab:AddButton({
-	Name = "Copy",
+	Name = "Copy link get key",
 	Callback = function()
-      		copy("https://workink.net/2L8/GetkeyPremiumGui")
+      		copy("https://workink.net/2L8/KeyScriptKrnl")
 			notice("Done" ,"This link has been copied to your clipboard. You can now paste it into your web browser.")
   	end    
 })
@@ -70,7 +58,7 @@ Tab:AddButton({
 if CurrentKey == Key then
 if getgenv().done == false then
 	getgenv().done = true
-loadstring(game:HttpGet("https://pastebin.com/raw/4niFW5yb",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/KRNL-MOBILE-NEW",true))()
 OrionLib:Destroy()
 end
 else
