@@ -1,0 +1,71 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({IntroText = "Yotube Hòa Poy Tv",Name = "BinbinvoGaming Húp - Hack Cày beli + Lấy Key Râu Con Cặc", HidePremium = false, SaveConfig = true, ConfigFolder = "ProjectBlox"})
+
+-- Tabs
+
+local MainTab = Window:MakeTab({
+
+	Name = "Chức Năng",	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+-- Button
+
+MainTab:AddButton({
+
+	Name = "Bật Auto Chest",
+
+	Callback = function()   loadstring(game:HttpGet("https://raw.githubusercontent.com/Padupo/scrnohop/main/autochestngon"))();
+
+  	end    
+
+})
+
+MainTab:AddButton({
+
+	Name = "Bật Săn Bounty",
+
+	Callback = function()   loadstring(game:HttpGet("https://raw.githubusercontent.com/AloneBiNgu/AloneHub/main/BountyV2.lua"))();
+
+  	end    
+
+})
+
+MainTab:AddButton({
+
+	Name = "Làm ơn xem kĩ các Video Hướng Dẫn Sài kênh Hòa Poy Tv",
+
+	Callback = function()  
+
+  	end    
+
+})
+
+MainTab:AddButton({
+
+	Name = "Tránh Việc đéo biết dùng nhé",
+
+	Callback = function()  
+
+  	end    
+
+})
+
+MainTab:AddButton({
+
+	Name = "ROBUXNEW.COM Có bán Ác Gohuman + cdk chỉ ̀50k",
+
+	Callback = function()  
+
+  	end    
+
+})
+
+coroutine.resume(NotificationCoroutine)
+
+OrionLib:Init()
+
+task.wait(2)
