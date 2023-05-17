@@ -1,4 +1,4 @@
-local Library = loadstribg(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("BinbinvoGaming HUB", "Ocean")
 
 local Main = Window:NewTab("Main")
@@ -163,6 +163,82 @@ MainSection:NewButton("Switch Hub", "Switch Hub", function()
 end)
 MainSection:NewButton("ShowItem", "ShowItem", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/CFA-HUB/CFAHub-Free/main/ShowItem.lua"))()
+end)oadstring(game:HttpGet("https://raw.githubusercontent.com/scriptpastebin/raw/main/ATR",true))()
+
+end)
+
+MainSection:NewButton("ZEN GAME HUB", "ZEN GAME HUB", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaizenofficiall/KaiZen/main/GameHub", true))()
+
+end)
+
+MainSection:NewButton("Under Hub v1", "Under Hub v1", function()
+
+    (getgenv()).Key = "UNDER-HUB-BETA" --ห้ามลบ
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xSxyz/keyunderhub/main/Loading_Ui"))()
+
+end)
+
+MainSection:NewButton("Under Hub V2 l New", "Under Hub V2 l New", function()
+
+    getgenv().JoinTeam = "Pirate" -- / Marine
+
+shared.keys = "6a3918e1b0350f925d3fe91493499d9" --Key
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/xSxyz/Project-Dev-beta/main/Project-005-V2"))()
+
+end)
+
+MainSection:NewButton("B_Genesis Hub", "B_Genesis Hub", function()
+
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/raw-scriptpastebin/raw/main/B_Genesis'))()
+
+end)
+
+MainSection:NewButton("String Hub v2", "String Hub V2", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/StringV2/StringHub/main/BF.lua", true))()
+
+end)
+
+MainSection:NewButton("TNG HUB", "TNG HUB", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/tngaming123/TNGHub/main/TNG%20Hub%20V3.lua"))()
+
+end)
+
+MainSection:NewButton("ONE X HUB", "ONE X HUB", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/One-x-HUB/main/README.md"))()
+
+end)
+
+MainSection:NewButton("MODZ BACK HUB", "MODZ BACK HUB", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/natoppo044/GGEZ/main/MODZ_HUB.txt", true))()
+
+end)
+
+MainSection:NewButton("ZAMA HUB V2", "ZAMA HUB V2", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/RimuruScripter/Zama-Hub/main/LoadingScriptV2"))()
+
+end)
+
+MainSection:NewButton("Switch Hub", "Switch Hub", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LoserEiEi/EieiName/main/CrackSwitchHub"))();
+
+-- Switch Hub crack old update version --
+
+end)
+
+MainSection:NewButton("ShowItem", "ShowItem", function()
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CFA-HUB/CFAHub-Free/main/ShowItem.lua"))()
+
 end)
 local  = Window:NewTab("Main2")
 local Main2Section = Tab:NewSection("pet simulator x")
