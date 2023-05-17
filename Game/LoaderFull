@@ -7,6 +7,12 @@ elseif PlaceId == 4490140733 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/MyRestaurant/Loader'))()
 elseif PlaceId == 3101667897 then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/BinbinvoGaming/DeletedUserCode/main/BuildABoatForTreasure/GoldFarm'))()
+elseif PlaceId == 6516141723 then
+    loadstring(game:HttpGet(('https://BinbinvoGaming.github.io/Doors/Loader'),true))()
+elseif PlaceId == 6284583030 then
+    loadstring(game:HttpGet(('https://BinbinvoGaming.github.io/Evade'),true))()
+elseif PlaceId == 9872472334 then
+    loadstring(game:HttpGet(('https://BinbinvoGaming.github.io/PetSmulatorXNew/Loader'),true))()
 else
     game.Players.LocalPlayer:Kick('Not Support this map.')
 end
