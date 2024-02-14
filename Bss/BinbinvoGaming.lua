@@ -6,7 +6,7 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 hives = game.Workspace.Honeycombs:GetChildren() for i = #hives, 1, -1 do  v = game.Workspace.Honeycombs:GetChildren()[i] if v.Owner.Value == nil then game.ReplicatedStorage.Events.ClaimHive:FireServer(v.HiveID.Value) end end
 OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "BinbinvoGaming Hub I Bss", HidePremium = false, SaveConfig = true, ConfigFolder = "BinbinvoGaming Hub", IntroEnabled = true, IntroText = "BinbinvoGaming|Loader",IntroIcon = "rbxassetid://10472045394", Icon = "rbxassetid://10472045394" })
+local Window = OrionLib:MakeWindow({Name = "BinbinvoGaming Hub I Bss", HidePremium = false, SaveConfig = true, ConfigFolder = "BinbinvoGaming Hub", IntroEnabled = true, IntroText = "BinbinvoGaming|Loader",IntroIcon = "", Icon = "" })
 local Main = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
