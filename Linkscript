@@ -1,0 +1,1 @@
+loadstring(game:HttpGet('https://BinbinvoGaming.github.io/MurderMystery2/Loader'))()
