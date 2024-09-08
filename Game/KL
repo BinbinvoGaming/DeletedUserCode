@@ -1,0 +1,64 @@
+repeat wait() until game:IsLoaded() and game.Players.LocalPlayer
+getgenv().Key = ""
+if not _G.Config then
+    local k = {
+        Events = {
+            SwordChanged = nil,
+            FightingStyleChanged = nil,
+            EnemiesAdded = nil,
+            EnemiesRemoved = nil,
+            FlingPrevent = nil,
+            WindowFocusReleased = nil,
+            WindowFocused = nil,
+        }, --> Necessary for script, do not adjust!
+
+        Loops = {
+            BringMob = false,
+            Attack = false,
+        },  --> Necessary for script, do not adjust!
+
+        Allowed_Actions = {
+            CollectChests = true, --> Collect all chests!
+            StorageFruit = true, --> Auto store devil fruit!
+            BossesAim = { "Expert Swordman [Lv. 3000]", "King Samurai [Lv. 3500]", "Dragon [Lv. 5000]",
+            "Ms. Mother [Lv. 7500]", "Ghost Ship", "SeaKing", "HydraSeaKing" }, --> Focus on these bosses!
+            SpecificItemsToGet = {"DarkLeg", "Cyborg", "Buso", "Ken", "WaterStyle", "DragonClaw", "Electro"}, --> Get specific items!
+
+            M1 = true, --> Auto M1 attack!
+            UseSkills = true, --> Auto use skills!
+
+            Stats = {
+                Melee = { Name = "Melee", Enabled = true }, --> Enable to upgrade!
+                Sword = { Name = "sword", Enabled = true },
+                Defense = { Name = "Defense", Enabled = true },
+                Fruit = { Name = "DF", Enabled = false }
+            }, --> Upgrade order: Melee --> Sword --> Defense --> Fruit
+
+            FindSeaMonster = true, --> Auto find sea monsters!
+
+            Sea2Unlock = true, --> Auto unlock Sea 2!
+            Sea3Unlock = true, --> Auto unlock Sea 3!
+        },
+
+        OnlyFarm = { ["Dragon [Lv. 5000]"] = { At = 5000 } }, --> Focus on Dragon [Lv. 5000]!
+
+        Farm = CFrame.Angles(math.pi / -2, 0, 0) * CFrame.new(0, 0, 7), --> Efficient farming!
+
+        -- Optimize farming
+        Options_Disable = {
+            Textures = true,
+            VisualEffects = true,
+            Parts = true,
+            Particles = true,
+            Sky = true,
+            FullBright = false
+        },
+
+        Performance = {
+            SetFPS = 20, --> Useful for low cpu usage, while using in long time!
+            WhiteScreen = true, --> Not recommended to use
+        }
+    }
+    _G.Config = k
+end
+loadstring(game:HttpGet("https://raw.githubusercontent.com/obiiyeuem/vthangsitink/main/BananaCat-KaitunKL.lua"))()
